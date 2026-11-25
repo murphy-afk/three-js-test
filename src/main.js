@@ -26,8 +26,16 @@ const cube2 = new THREE.Mesh(
   new THREE.BoxGeometry(1, 1, 1),
   new THREE.MeshStandardMaterial({color: 0x4cd9bd}),
 );
-cube2.position.set(1, 1, 0);
+cube2.position.set(1, 1, -1);
 scene.add(cube2);
+
+// Sphere
+const sphere = new THREE.Mesh(
+  new THREE.SphereGeometry(0.5, 10, 10),
+  new THREE.MeshStandardMaterial({color: 0x4c6bd9, flatShading: true, wireframe: true}),
+)
+sphere.position.set(-1, 1, 1);
+scene.add(sphere);
 
 // Lights
 scene.add(new THREE.AmbientLight(0xffffff, 0.5));
@@ -42,5 +50,6 @@ renderer.setAnimationLoop(() => {
   cube.rotation.x += 0.005;
   cube2.rotation.y -= 0.01;
   cube2.rotation.x -= 0.005;
+  sphere.rotation.y += 0.01;
   renderer.render(scene, camera);
 });
