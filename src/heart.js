@@ -25,12 +25,16 @@ const extrudeSettings = {
 };
 const heart = new THREE.Mesh(
   new THREE.ExtrudeGeometry( heartShape, extrudeSettings ).center(),
-  new THREE.MeshBasicMaterial({ color: 0xc70404})
+  new THREE.MeshStandardMaterial({ color: 0xc70404})
 );
 heart.scale.setScalar( 0.04 );
 heart.rotation.z = Math.PI;
 scene.add( heart );
 
+scene.add(new THREE.AmbientLight(0xfac0eb, 0.5));
+const sun = new THREE.DirectionalLight(0xfac0eb, 2);
+sun.position.set(5, 8, 4);
+scene.add(sun);
 
 const renderer = new THREE.WebGLRenderer({antialias:true});
 renderer.setSize(innerWidth, innerHeight);
